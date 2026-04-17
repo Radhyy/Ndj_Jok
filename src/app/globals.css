@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f3ee;
+  --foreground: #15130f;
+  --surface: #fffcf7;
+  --muted: #6e6557;
+  --brand: #c88a2d;
+  --brand-strong: #9b6414;
+  --line: #ded3be;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sora);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-cinzel), serif;
+}
+
+.hero-overlay {
+  background:
+    linear-gradient(106deg, rgba(11, 9, 5, 0.86) 10%, rgba(11, 9, 5, 0.24) 52%, rgba(11, 9, 5, 0.7) 100%),
+    radial-gradient(circle at 82% 18%, rgba(200, 138, 45, 0.28) 0%, rgba(200, 138, 45, 0) 42%);
+}
+
+.soft-pattern {
+  background-image:
+    linear-gradient(rgba(200, 138, 45, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 138, 45, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.premium-card {
+  background: linear-gradient(170deg, rgba(255, 255, 255, 0.96) 0%, rgba(249, 243, 232, 0.94) 100%);
+  border: 1px solid var(--line);
+  box-shadow: 0 14px 40px rgba(73, 55, 18, 0.11);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: reveal 0.85s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
