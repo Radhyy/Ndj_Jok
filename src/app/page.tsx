@@ -7,6 +7,7 @@ import {
   GalleryVertical,
   Hammer,
   Headset,
+  Instagram,
   Mail,
   MapPin,
   MessageCircle,
@@ -450,10 +451,10 @@ export default function Home() {
                   <MapPin className="h-5 w-5 text-[var(--brand-strong)]" /> South Sidoarjo, Jawa Timur, Indonesia
                 </p>
                 <p className="flex items-center gap-3 text-sm md:text-base">
-                  <Phone className="h-5 w-5 text-[var(--brand-strong)]" /> WA / Telp 085136074121
+                  <Phone className="h-5 w-5 text-[var(--brand-strong)]" /> WA / Telp +62 812-1635-6153
                 </p>
                 <p className="flex items-center gap-3 text-sm md:text-base">
-                  <Mail className="h-5 w-5 text-[var(--brand-strong)]" />   njd_jokmobil@gmail.com
+                  <Instagram className="h-5 w-5 text-[var(--brand-strong)]" /> @ndj_jokmobil
                 </p>
                 <p className="flex items-center gap-3 text-sm md:text-base">
                   <Clock3 className="h-5 w-5 text-[var(--brand-strong)]" /> Senin - Sabtu, 08.00 - 17.00
