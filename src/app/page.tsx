@@ -146,7 +146,7 @@ export default function Home() {
         className="relative min-h-[82vh] overflow-hidden"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1592853625601-bb9d23da12fc?auto=format&fit=crop&w=1600&q=80')",
+            "url('/Images/WhatsApp Image 2026-05-07 at 1.04.43 PM.jpeg')",
           backgroundPosition: "center",
           backgroundSize: "cover",
         }}
