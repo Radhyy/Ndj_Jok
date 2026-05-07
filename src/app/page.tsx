@@ -7,7 +7,6 @@ import {
   GalleryVertical,
   Hammer,
   Headset,
-  Instagram,
   Mail,
   MapPin,
   MessageCircle,
@@ -454,7 +453,7 @@ export default function Home() {
                   <Phone className="h-5 w-5 text-[var(--brand-strong)]" /> WA / Telp +62 812-1635-6153
                 </p>
                 <p className="flex items-center gap-3 text-sm md:text-base">
-                  <Instagram className="h-5 w-5 text-[var(--brand-strong)]" /> @ndj_jokmobil
+                  <BadgeCheck className="h-5 w-5 text-[var(--brand-strong)]" /> @ndj_jokmobil
                 </p>
                 <p className="flex items-center gap-3 text-sm md:text-base">
                   <Clock3 className="h-5 w-5 text-[var(--brand-strong)]" /> Senin - Sabtu, 08.00 - 17.00
