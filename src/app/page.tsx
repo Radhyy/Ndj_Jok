@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import {
   BadgeCheck,
   CalendarClock,
@@ -26,28 +29,7 @@ const strengths = [
   "Pelayanan Jujur, Solutif, Tanggap",
 ];
 
-const services = [
-  {
-    title: "Mobil 2 Baris",
-    price: "Mulai 1,8 jt - 2,4 jt",
-    desc: "Pilihan material disesuaikan kebutuhan harian dan gaya interior.",
-  },
-  {
-    title: "Mobil 3 Baris",
-    price: "Mulai 2,7 jt - 3,2 jt",
-    desc: "Pola jahitan presisi dengan opsi design premium untuk keluarga.",
-  },
-  {
-    title: "SUV & Big Car",
-    price: "Mulai 2,4 jt - 3,5 jt",
-    desc: "Support custom bolster, ventilasi, dan kombinasi warna eksklusif.",
-  },
-  {
-    title: "Material Brand",
-    price: "MBtech | Caviero | Vision",
-    desc: "Semua bahan original dengan garansi jahitan dan fitting.",
-  },
-];
+
 
 const premiumCollections = [
   {
@@ -140,10 +122,22 @@ const galleryImages = [
 ];
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    nama: "",
+    wa: "",
+    mobil: "",
+    kebutuhan: "",
+  });
+
+  const handleWhatsApp = () => {
+    const text = `Halo Ndj JokMobil! Saya ingin request penawaran:%0A%0ANama: ${formData.nama}%0ANo WA: ${formData.wa}%0ATipe Mobil: ${formData.mobil}%0APreferensi: ${formData.kebutuhan}`;
+    window.open(`https://wa.me/6281216356153?text=${text}`, "_blank");
+  };
+
   return (
     <div className="w-full bg-[var(--background)] text-[var(--foreground)]">
       <header
-        className="relative min-h-[82vh] overflow-hidden"
+        className="relative flex min-h-[100dvh] flex-col overflow-hidden"
         style={{
           backgroundImage:
             "url('/Images/WhatsApp Image 2026-05-07 at 1.04.43 PM.jpeg')",
@@ -152,7 +146,7 @@ export default function Home() {
         }}
       >
         <div className="hero-overlay absolute inset-0" />
-        <nav className="relative mx-auto flex w-[92%] max-w-6xl items-center justify-between py-7 text-white">
+        <nav className="relative mx-auto flex w-[92%] max-w-6xl shrink-0 items-center justify-between py-7 text-white">
           <p className="font-display text-xl tracking-wider">Ndj_JokMobil</p>
           <div className="hidden items-center gap-8 text-sm font-semibold lg:flex">
             <a href="#layanan" className="transition hover:text-amber-300">
@@ -173,7 +167,7 @@ export default function Home() {
           </div>
         </nav>
 
-        <div className="relative mx-auto flex w-[92%] max-w-6xl flex-col gap-7 pb-20 pt-10 text-white md:pt-20">
+        <div className="relative mx-auto flex w-[92%] max-w-6xl flex-1 flex-col justify-center gap-7 pb-20 pt-4 text-white md:pb-32 md:pt-10">
           <p className="reveal text-sm font-bold uppercase tracking-[0.35em] text-amber-300" style={{ ["--delay" as string]: "0.1s" }}>
             Spesialis Bekleed Jok Mobil Sidoarjo
           </p>
@@ -205,34 +199,22 @@ export default function Home() {
 
       <main>
         <section id="layanan" className="soft-pattern py-20">
-          <div className="mx-auto grid w-[92%] max-w-6xl gap-10 lg:grid-cols-2">
-            <div className="premium-card rounded-3xl p-7 md:p-10">
-              <h2 className="font-display mb-6 text-3xl">Keunggulan Workshop</h2>
-              <div className="space-y-4">
-                {strengths.map((item, idx) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div
-                      className="h-2.5 rounded-full bg-[var(--brand)]"
-                      style={{ width: `${58 + idx * 8}px` }}
-                    />
-                    <p className="text-sm font-semibold text-stone-700 md:text-base">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="premium-card rounded-3xl p-7 md:p-10">
-              <h2 className="font-display mb-6 text-3xl">Portfolio Dan Harga</h2>
-              <div className="space-y-5">
-                {services.map((service) => (
-                  <article key={service.title} className="flex items-start gap-4 border-b border-[var(--line)] pb-4 last:border-none last:pb-0">
-                    <Car className="mt-1 h-5 w-5 text-[var(--brand-strong)]" />
-                    <div>
-                      <h3 className="text-lg font-semibold text-stone-800">{service.title}</h3>
-                      <p className="text-sm font-bold text-[var(--brand-strong)]">{service.price}</p>
-                      <p className="mt-1 text-sm text-[var(--muted)]">{service.desc}</p>
+          <div className="mx-auto w-[92%] max-w-5xl">
+            <div className="premium-card rounded-3xl p-8 md:p-12">
+              <h2 className="font-display mb-10 text-center text-3xl md:text-4xl">Keunggulan Workshop</h2>
+              <div className="flex flex-wrap justify-center gap-5 md:gap-6">
+                {strengths.map((item) => (
+                  <div
+                    key={item}
+                    className="flex w-full max-w-[320px] items-center gap-4 rounded-2xl border border-[var(--line)] bg-white/60 p-4 transition duration-300 hover:-translate-y-1 hover:shadow-md md:p-5"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-amber-100 text-[var(--brand-strong)]">
+                      <Check className="h-6 w-6" />
                     </div>
-                  </article>
+                    <p className="text-sm font-semibold leading-snug text-stone-800 md:text-base">
+                      {item}
+                    </p>
+                  </div>
                 ))}
               </div>
             </div>
@@ -427,13 +409,17 @@ export default function Home() {
 
         <section className="py-20">
           <div className="mx-auto w-[92%] max-w-6xl rounded-3xl bg-gradient-to-r from-[#1e1710] via-[#312315] to-[#5b3b17] p-8 text-white md:p-12">
-            <h2 className="font-display text-4xl">PROMO?</h2>
+            <h2 className="font-display text-4xl">Siap Upgrade Interior Anda?</h2>
             <p className="mt-3 max-w-2xl text-sm text-stone-200 md:text-base">
-              Ada diskon hingga Rp 400.000 untuk paket material tertentu. Promo terbatas setiap bulan, cocok untuk Anda yang ingin upgrade interior sekarang.
+              Kami pastikan pengerjaan rapi, presisi, dan menggunakan material 100% original. Kepuasan Anda dan kenyamanan berkendara adalah prioritas utama workshop kami.
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
-              <span className="rounded-full bg-white/15 px-4 py-2 text-sm">Kuota Terbatas</span>
-              <span className="rounded-full bg-white/15 px-4 py-2 text-sm">Berlaku Minggu Ini</span>
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium">
+                <ShieldCheck className="h-4 w-4 text-amber-300" /> Garansi Jahitan
+              </span>
+              <span className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-2 text-sm font-medium">
+                <Check className="h-4 w-4 text-amber-300" /> 100% Material Original
+              </span>
             </div>
           </div>
         </section>
@@ -466,23 +452,32 @@ export default function Home() {
               <p className="mt-2 text-sm text-[var(--muted)]">Kirim data mobil Anda, kami balas estimasi secepatnya.</p>
               <form className="mt-6 space-y-4">
                 <input
+                  value={formData.nama}
+                  onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
                   className="w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm outline-none ring-[var(--brand)] transition focus:ring-1"
                   placeholder="Nama"
                 />
                 <input
+                  value={formData.wa}
+                  onChange={(e) => setFormData({ ...formData, wa: e.target.value })}
                   className="w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm outline-none ring-[var(--brand)] transition focus:ring-1"
                   placeholder="Nomor WhatsApp"
                 />
                 <input
+                  value={formData.mobil}
+                  onChange={(e) => setFormData({ ...formData, mobil: e.target.value })}
                   className="w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm outline-none ring-[var(--brand)] transition focus:ring-1"
                   placeholder="Tipe Mobil"
                 />
                 <textarea
+                  value={formData.kebutuhan}
+                  onChange={(e) => setFormData({ ...formData, kebutuhan: e.target.value })}
                   className="h-28 w-full rounded-xl border border-[var(--line)] bg-white px-4 py-3 text-sm outline-none ring-[var(--brand)] transition focus:ring-1"
                   placeholder="Preferensi warna atau model"
                 />
                 <button
                   type="button"
+                  onClick={handleWhatsApp}
                   className="inline-flex items-center gap-2 rounded-full bg-[var(--brand)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--brand-strong)]"
                 >
                   <Wrench className="h-4 w-4" /> Kirim Permintaan
